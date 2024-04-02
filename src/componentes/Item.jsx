@@ -1,19 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { toCapital } from '../helpers/toCapital'
 
-export const Item = ({producto}) => {
+const Item = ( {producto} ) => {
   return (
     <div className="producto">
-        <img src={producto.imagen}></img>
+        <img src={producto.imagen} alt={producto.titulo} />
         <div>
             <h4>{producto.titulo}</h4>
-            <p>Precio:${producto.precio}</p>
-            <p>Categora:{producto.categoria}</p>
-            <p>{producto.descripcion}</p>
-            <Link className="ver-mas" href={`/item`}>Ver más</Link>
+            <p>Precio: ${producto.precio}</p>
+            <p>Categoría: {toCapital(producto.categoria)}</p>
+            <Link className="ver-mas" to={`/item/${producto.id}`}>Ver más</Link>
         </div>
-        
     </div>
   )
 }
+
 export default Item
